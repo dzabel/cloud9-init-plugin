@@ -36,7 +36,7 @@ else
 
 ####### Installation Start
 
-chkStatus "mkdir $installDir"
+chkStatus "mkdir -p $installDir"
 
 ######## Update System
 chkStatus "sudo yum -y update"
@@ -48,8 +48,12 @@ chkStatus "sudo yum -y install git"
 chkStatus "git config --global credential.helper store" "git credentials store"
 chkStatus "git config --global user.name dzabel" "set git user"
 chkStatus "git config --global user.email daniel.zabel@coremedia.com" "set git user email"
-echo "Input your github access token:\n"
+echo "Input your github access token:"
 read GITHUB_TOKEN
-echo "https://dzabel:${GITHUB_TOKEN}@github.com" > ~/.git-credentials
+export GITHUB_TOKEN=${GITHUB_TOKEN}
+cat >  ~/.git-credentials <<EOF
+https://dzabel:${GITHUB_TOKEN}@github.com"
+EOF
+cd $installDir
 chkStatus "git clone -b master-config --single-branch https://github.com/CoreMedia/cloud-infrastructure cloud-infrastructure-config" "clone master-config"
 chkStatus "git clone https://github.com/CoreMedia/cloud-infrastructure cloud-infrastructure" "clone cloud-infrastructure"
