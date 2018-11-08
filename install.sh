@@ -59,5 +59,15 @@ cat >  ~/.git-credentials <<EOF
 https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com
 EOF
 cd $installDir
-chkStatus "git clone -b master-config --single-branch https://github.com/CoreMedia/cloud-infrastructure cloud-infrastructure-config" "clone master-config"
-chkStatus "git clone https://github.com/CoreMedia/cloud-infrastructure cloud-infrastructure" "clone cloud-infrastructure"
+if [ -d "cloud-infrastructure-config" ]; then
+  chkStatus "cd cloud-infrastructure-config && git pull -q && cd .." "update master-config"
+else
+  chkStatus "git clone -q -b master-config --single-branch https://github.com/CoreMedia/cloud-infrastructure cloud-infrastructure-config" "clone master-config"
+fi
+
+if [ -d "cloud-infrastructure" ]; then
+  chkStatus "cd cloud-infrastructure && git pull -q && cd .." "update master-config"
+else
+  chkStatus "git clone -q https://github.com/CoreMedia/cloud-infrastructure cloud-infrastructure" "clone cloud-infrastructure"
+fi
+
