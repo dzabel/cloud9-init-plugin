@@ -1,21 +1,19 @@
-# AWS Cloud9 CMOC Init Plugin
+# AWS Cloud9 CMOC Init Setup
 
-A plugin for setting up a development environment.
+## Introduction
 
-## init plugin
-services.pluginManager.loadPackage([
-"https://raw.githubusercontent.com/dzabel/cloud9-init-plugin/master/install.js"
-]);
+  This script will update your environment, install tools and setup repositories on Cloud9 IDE. Installation takes only one line in the cloud:
 
-## add Terraform Support
-1. In your Cloud9 IDE, go to AWS Cloud9 -> Open Your Init Script
+  `bash <(curl -s https://raw.githubusercontent.com/dzabel/cloud9-init-plugin/master/install.sh)`
+  
+  It jump-starts the development process by automating the environment setup in the cloud. It contains the tools needed to maintain cmoc stack.
 
-2. Modify your init script to look like:
-services.pluginManager.loadPackage([
-"https://raw.githubusercontent.com/dzabel/cloud9-init-plugin/master/install.js",
-"https://raw.githubusercontent.com/dr-scoots/plugin.ide.language.terraform/master/plugin.ide.language.terraform.js"
-]);
+ 
+## Steps
 
-3. Save your init.js and reload Cloud9 in your browser
+### Run the Command
+- Run the command
 
-4. Go to View -> Syntax and scroll down. You'll see Terraform as an option.
+`bash <(curl -s https://raw.githubusercontent.com/dzabel/cloud9-init-plugin/master/install.sh)`
+
+Let the script run
