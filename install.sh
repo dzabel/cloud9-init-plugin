@@ -45,14 +45,18 @@ chkStatus "sudo yum -y update"
 chkStatus "sudo yum -y install git"
 
 ######### Configure GIT
-chkStatus "git config --global credential.helper store" "git credentials store"
-chkStatus "git config --global user.name dzabel" "set git user"
-chkStatus "git config --global user.email daniel.zabel@coremedia.com" "set git user email"
+echo "Input your github user:"
+read GITHUB_USER
+export GITHUB_USER=${GITHUB_USER}
+
 echo "Input your github access token:"
 read GITHUB_TOKEN
 export GITHUB_TOKEN=${GITHUB_TOKEN}
+
+chkStatus "git config --global credential.helper store" "git credentials store"
+chkStatus "git config --global user.name ${GITHUB_USER}" "set git user"
 cat >  ~/.git-credentials <<EOF
-https://dzabel:${GITHUB_TOKEN}@github.com
+https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com
 EOF
 cd $installDir
 chkStatus "git clone -b master-config --single-branch https://github.com/CoreMedia/cloud-infrastructure cloud-infrastructure-config" "clone master-config"
