@@ -52,7 +52,7 @@ echo "Input your github access token:"
 read GITHUB_TOKEN
 export GITHUB_TOKEN=${GITHUB_TOKEN}
 cat >  ~/.git-credentials <<EOF
-https://dzabel:${GITHUB_TOKEN}@github.com"
+https://dzabel:${GITHUB_TOKEN}@github.com
 EOF
 cd $installDir
 chkStatus "git clone -b master-config --single-branch https://github.com/CoreMedia/cloud-infrastructure cloud-infrastructure-config" "clone master-config"
