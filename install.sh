@@ -41,7 +41,7 @@ chkStatus "sudo yum -y update" "${blu} Updating OS ${end}"
 chkStatus "sudo yum -y install git jq" "installing tools"
 
 ######### Configure GIT
-echo "${blu} Input your github user ${end} ${blu} (becomes your \"su -\" user for daily work): ${end}"
+echo "${blu} Input your github user: ${end}"
 read GITHUB_USER
 export GITHUB_USER=${GITHUB_USER}
 
@@ -50,10 +50,10 @@ read GITHUB_EMAIL
 export GITHUB_EMAIL=${GITHUB_EMAIL}
 
 echo "${red} Input your github access token: ${red}"
-read -s GITHUB_TOKEN
+read GITHUB_TOKEN
 export GITHUB_TOKEN=${GITHUB_TOKEN}
 
-chkStatus "git config --global credential.helper \"netrc -f ~/.netrc.gpg -v\"" "configure git credentials store"
+chkStatus "git config --global credential.helper 'netrc -f ~/.netrc.gpg -v'" "configure git credentials store"
 
 echo "${red}choose your gpg password (remember and keep safe): ${end}"
 read GPG_PWD
