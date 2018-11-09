@@ -53,7 +53,7 @@ echo "${red} Input your github access token: ${red}"
 read GITHUB_TOKEN
 export GITHUB_TOKEN=${GITHUB_TOKEN}
 
-chkStatus "git config --global credential.helper 'netrc -f ~/.netrc.gpg -v'" "configure git credentials store"
+chkStatus "git config --local credential.helper 'netrc -f ~/.netrc.gpg -v'" "configure git credentials store"
 
 echo "${red}choose your gpg password (remember and keep safe): ${end}"
 read GPG_PWD
