@@ -36,9 +36,12 @@ chkStatus() {
 
 chkStatus "mkdir -p $envDir" "create directories"
 
+pip=$(which pip)
 ######## Prepare System
 chkStatus "sudo yum -y update" "${blu} Updating OS ${end}"
 chkStatus "sudo yum -y install git jq" "installing tools"
+chkStatus "sudo ${pip} install --upgrade pip" "update pip"
+chkStatus "sudo ${pip} install --upgrade awsume" "update/install awsume"
 
 ######### Configure GIT
 echo "${blu} Input your github user: ${end}"
